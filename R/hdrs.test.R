@@ -49,6 +49,11 @@ hdrs.test <- function(x, y, alternative="two.tailed", p=80, nsim=5000, nperm=500
 
   })
 
+  #This re-registers the sequential backend after the foreach loop is done, which
+  #effectively gets rid of the doParallel backend registered above.
+  foreach::registerDoSEQ()
+
+  #Calculate the observed difference in HDR synchrony between x and y.
   obsdiff <- hdrs(x, p=p, nsim=nsim) - hdrs(y, p=p, nsim=nsim)
 
   #Calculate the acheived significance level of the test, for the

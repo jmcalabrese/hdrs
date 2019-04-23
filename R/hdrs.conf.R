@@ -22,6 +22,10 @@ hdrs.conf <- function(x, ci=95, p=80, nsim=5000, nboot=5000, ncores=1){
 
   })
 
+  #This re-registers the sequential backend after the foreach loop is done.
+  #this effectively gets rid of the doParallel backend registered above.
+  foreach::registerDoSEQ()
+
   ql <- (1-ci/100)/2
 
   return(quantile(boot, c(ql, 1-ql)))
