@@ -1,0 +1,17 @@
+Package: hdrs
+Type: Package
+Title: Highest Density Region Synchrony Metric
+Version: 0.1.0
+Author: Justin M. Calabrese
+Maintainer: Justin M. Calabrese <calabresej@si.edu>
+Description: Functions for estimating an HDR-based synchrony metric and its confidence intervals, and a hypothesis test for comparing synchrony between two groups.
+License: GPL-3
+URL: https://github.com/jmcalabrese/hdrs
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.5.0)
+Imports:
+  hdrcde,
+  doParallel,
+  foreach
+RoxygenNote: 6.1.1
