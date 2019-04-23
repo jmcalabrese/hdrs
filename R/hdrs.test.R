@@ -9,10 +9,20 @@
 #' @param nboot The number of bootstrap replicates used to estimate the CIs. The default is 5000.
 #' @param ncores The number of processor cores over which to distribute the \code{nboot} replicates. The default is 1.
 #' @return A list of class "hdrstest" containing the following values.
+#' @note The \code{hdrs} metric quantifies the amount of time it took for \code{p} percent of the sampled individuals to
+#' complete the specified activity (e.g., mating, calving, etc...). Therefore, a smaller \code{hdrs} value indicates a \emph{more}
+#' synchronous population, while a larger \code{hdrs} value indicates \emph{less} synchrony. Consequently, the alternative
+#' hypothesis that \code{x} is more synchronous than \code{y} ("more.sync") is equivalent to \code{hdrs(x) < hdrs(y)}, while
+#' the "less.sync" alternative implies \code{hdrs(x) > hdrs(y)}. The null hypothesis is always \code{hdrs(x) = hdrs(y)}, and
+#' the default "two.tailed" alternative is simply \code{hdrs(x) != hdrs(y)}.
+#'
+#' The \code{ncores} argument specifies the number of processor cores over which the \code{foreach} loop
+#' will distribute permutation re-samples. This should be set no higher than the number of hyperthreaded
+#' cores on your machine, which is usually twice the number of physical cores.
 #' @examples
-#' x <- rnorm(25)
-#' y <- rnorm(25, sd=1.5)
-#' hdrs.conf(x, y, alternative="more.sync")
+#' x <- rexp(25)
+#' y <- rexp(25, rate=0.5)
+#' hdrs.conf(x, y, alternative="more.sync", nperm=250)
 #' @export
 hdrs.test <- function(x, y, alternative="two.tailed", p=80, nsim=5000, nperm=5000, ncores=1){
 

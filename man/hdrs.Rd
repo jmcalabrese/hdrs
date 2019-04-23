@@ -17,7 +17,12 @@ A number representing the length of time it takes \code{p} percent of indivdiual
 \description{
 Calculate the HDR-based synchrony metric
 }
+\note{
+The \code{hdrs} metric quantifies the amount of time it took for \code{p} percent of the sampled individuals to
+complete the specified activity (e.g., mating, calving, etc...). Therefore, a smaller \code{hdrs} value indicates a \emph{more}
+synchronous population, while a larger \code{hdrs} value indicates \emph{less} synchrony.
+}
 \examples{
-x <- rnorm(25)
+x <- rexp(25)
 hdrs(x)
 }

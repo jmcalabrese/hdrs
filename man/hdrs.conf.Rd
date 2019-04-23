@@ -26,7 +26,16 @@ A named numerical vector containing the lower and upper confidence limits for th
 \description{
 Calculate bootstrap confidence intervals for the HDR-based synchrony metric
 }
+\note{
+The \code{hdrs} metric quantifies the amount of time it took for \code{p} percent of the sampled individuals to
+complete the specified activity (e.g., mating, calving, etc...). Therefore, a smaller \code{hdrs} value indicates a \emph{more}
+synchronous population, while a larger \code{hdrs} value indicates \emph{less} synchrony.
+
+The \code{ncores} argument specifies the number of processor cores over which the \code{foreach} loop
+will distribute bootstrap re-samples. This should be set no higher than the number of hyperthreaded
+cores on your machine, which is usually twice the number of physical cores.
+}
 \examples{
-x <- rnorm(25)
-hdrs.conf(x)
+x <- rexp(25)
+hdrs.conf(x, nboot=250)
 }

@@ -3,8 +3,11 @@
 #' @param p A number indicating the percentage of individuals that have completed the focal activity. The default is 80.
 #' @param nsim The number of simulations used to esimtate the HDR. The default is 5000.
 #' @return A number representing the length of time it takes \code{p} percent of indivdiuals to complete the focal activity.
+#' @note The \code{hdrs} metric quantifies the amount of time it took for \code{p} percent of the sampled individuals to
+#' complete the specified activity (e.g., mating, calving, etc...). Therefore, a smaller \code{hdrs} value indicates a \emph{more}
+#' synchronous population, while a larger \code{hdrs} value indicates \emph{less} synchrony.
 #' @examples
-#' x <- rnorm(25)
+#' x <- rexp(25)
 #' hdrs(x)
 #' @export
 hdrs <- function(x, p=80, nsim=5000){
